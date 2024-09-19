@@ -1,0 +1,64 @@
+<div id="insertar" class="tab-pane fade">
+    <h3>Insertar Vehículo</h3>
+    <form id="insertarForm">
+        <div class="form-group">
+            <label for="placaInsertar">Placa:</label>
+            <input type="text" id="placaInsertar" class="form-control" placeholder="Ingrese la placa" required>
+        </div>
+        <div class="form-group">
+            <label for="marcaInsertar">Marca:</label>
+            <input type="text" id="marcaInsertar" class="form-control" placeholder="Ingrese la marca" required>
+        </div>
+        <div class="form-group">
+            <label for="modeloInsertar">Modelo:</label>
+            <input type="text" id="modeloInsertar" class="form-control" placeholder="Ingrese el modelo" required>
+        </div>
+        <div class="form-group">
+            <label for="anioInsertar">Año:</label>
+            <input type="number" id="anioInsertar" class="form-control" placeholder="Ingrese el año" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="estadoInsertar">Estado:</label>
+            <select id="estadoInsertar" class="form-control" required>
+                <option value="Perfecto">Perfecto</option>
+                <option value="Daño Menor">Daño Menor</option>
+                <option value="Reparacion Urgente">Reparación Urgente</option>
+                <option value="En reparación">En reparación</option>
+                <option value="Descarte">Descarte</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Insertar</button>
+    </form>
+
+    <script>
+        document.getElementById('insertarForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                PLACA: document.getElementById('placaInsertar').value,
+                MARCA: document.getElementById('marcaInsertar').value,
+                MODELO: document.getElementById('modeloInsertar').value,
+                ANIO: document.getElementById('anioInsertar').value, // Cambiado a ANIO
+                ESTADO: document.getElementById('estadoInsertar').value
+            };
+    
+            fetch('/api/vehiculos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Vehículo agregado con éxito');
+                } else {
+                    alert('Error al agregar el vehículo');
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+            });
+        });
+    </script>
+</div>

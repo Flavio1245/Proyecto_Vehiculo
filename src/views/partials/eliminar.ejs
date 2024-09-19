@@ -1,0 +1,32 @@
+<div id="eliminar" class="tab-pane fade">
+    <h3>Eliminar Vehículo</h3>
+    <form id="eliminarForm">
+        <div class="form-group">
+            <label for="placaEliminar">Placa:</label>
+            <input type="text" id="placaEliminar" class="form-control" placeholder="Ingrese la placa a eliminar">
+        </div>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('eliminarForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const placa = document.getElementById('placaEliminar').value;
+
+        fetch(`/api/vehiculos/${placa}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Vehículo eliminado con éxito');
+                // Aquí puedes agregar lógica para actualizar la vista o limpiar el formulario.
+            } else {
+                alert('Error al eliminar el vehículo');
+            }
+        })
+        .catch(err => {
+            console.error('Error:', err);
+        });
+    });
+</script>

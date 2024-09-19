@@ -1,0 +1,31 @@
+<div id="consulta" class="tab-pane fade show active">
+    <h3>Consultar Vehículo</h3>
+    <form id="consultaForm">
+        <div class="form-group">
+            <label for="placaConsulta">Placa:</label>
+            <input type="text" id="placaConsulta" class="form-control" placeholder="Ingrese la placa">
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+    <table id="resultadoConsulta" class="table mt-4" style="display: none;">
+        <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="placaResult"></td>
+                <td id="marcaResult"></td>
+                <td id="modeloResult"></td>
+                <td id="anoResult"></td>
+                <td id="estadoResult"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

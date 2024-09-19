@@ -1,0 +1,9 @@
+CREATE TABLE flotilla.vehiculos (
+  PLACA varchar(10) NOT NULL,
+  MARCA varchar(50) NOT NULL,
+  MODELO varchar(50) NOT NULL,
+  AÑO int CHECK (AÑO >= 1900 AND AÑO <= 2025),
+  ESTADO enum('Perfecto', 'Daño Menor', 'Reparacion Urgente', 'En reparación', 'Descarte') NOT NULL,
+  PRIMARY KEY (PLACA),
+  CONSTRAINT FORMATO_PLACA CHECK (REGEXP_LIKE(PLACA, '^[A-Z]-[A-Z]{3}[0-9]{3}$'))
+);
