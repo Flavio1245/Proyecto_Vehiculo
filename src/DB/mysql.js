@@ -113,7 +113,11 @@ function eliminar(tabla, data) {
     return new Promise((resolve, reject) => {
         const query = `DELETE FROM ${tabla} WHERE PLACA = ?`;
         conexion.query(query, [data.PLACA], (error, result) => {
-            return error ? reject(error) : resolve(result);
+            if (error) {
+                console.error('Error en la consulta DELETE:', error); // Agregar esta línea
+                return reject(error);
+            }
+            resolve(result);
         });
     });
 }

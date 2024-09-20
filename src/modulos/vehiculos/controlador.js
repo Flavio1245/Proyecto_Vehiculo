@@ -33,8 +33,9 @@ function agregar(body) {
 
 //eliminar
 function eliminar(PLACA) {
-    return db.eliminar(TABLA, PLACA)
+    return db.eliminar(TABLA, { PLACA })
         .catch(err => {
+            console.error('Error al eliminar el vehículo:', err); // Agregar esta línea
             throw new Error('Error al eliminar el vehículo: ' + err.message);
         });
 }

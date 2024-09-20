@@ -16,7 +16,7 @@
         <!-- Pestañas -->
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#consulta">Consultar Vehículo</a>
+                <a class="nav-link" id="todos-tab" data-toggle="tab" href="#todos">Todos los Vehículos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#insertar">Insertar Vehículo</a>
@@ -24,16 +24,12 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#eliminar">Eliminar Vehículo</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#todos">Todos los Vehículos</a>
-            </li>
         </ul>
 
         <div class="tab-content">
-            <%- include('partials/consulta.ejs') %>
+            <%- include('partials/todos.ejs') %>
             <%- include('partials/insertar.ejs') %>
             <%- include('partials/eliminar.ejs') %>
-            <%- include('partials/todos.ejs') %>
         </div>
     </div>
 
@@ -41,7 +37,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
-        // Tu código JavaScript aquí
+        // Cargar la tabla de vehículos al hacer clic en la pestaña "Todos los Vehículos"
+        document.getElementById('todos-tab').addEventListener('click', function() {
+            cargarVehiculos(); // Llama a la función que carga los vehículos
+        });
     </script>
 </body>
 </html>
